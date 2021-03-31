@@ -1,0 +1,106 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://menus/BarMenu.tscn" type="PackedScene" id=1]
+[ext_resource path="res://App.gd" type="Script" id=2]
+[ext_resource path="res://MenuBar.gd" type="Script" id=3]
+[ext_resource path="res://fonts/LUCON.TTF" type="DynamicFontData" id=4]
+[ext_resource path="res://theme.tres" type="Theme" id=5]
+
+[sub_resource type="DynamicFont" id=1443]
+size = 28
+font_data = ExtResource( 4 )
+
+[node name="App" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 5 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MenuBar" type="HBoxContainer" parent="VBoxContainer"]
+margin_right = 1024.0
+margin_bottom = 55.0
+script = ExtResource( 3 )
+
+[node name="MenuFile" parent="VBoxContainer/MenuBar" instance=ExtResource( 1 )]
+margin_right = 67.0
+margin_bottom = 55.0
+text = "File"
+
+[node name="MenuView" parent="VBoxContainer/MenuBar" instance=ExtResource( 1 )]
+margin_left = 75.0
+margin_right = 158.0
+margin_bottom = 55.0
+text = "View"
+
+[node name="MenuHelp" parent="VBoxContainer/MenuBar" instance=ExtResource( 1 )]
+margin_left = 166.0
+margin_right = 248.0
+margin_bottom = 55.0
+text = "Help"
+
+[node name="TextEdit" type="TextEdit" parent="VBoxContainer"]
+margin_top = 63.0
+margin_right = 1024.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 1443 )
+smooth_scrolling = true
+
+[node name="DialogAbout" type="AcceptDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -361.5
+margin_top = -124.0
+margin_right = 361.5
+margin_bottom = 124.0
+window_title = "About This Software"
+dialog_text = "A really bad text editor.
+(c) 2021 Alterae
+Note: Only the UTF-8 character encoding is supported."
+
+[node name="FileDialog" type="FileDialog" parent="."]
+margin_right = 645.0
+margin_bottom = 248.0
+rect_min_size = Vector2( 400, 140 )
+access = 2
+current_dir = "/Users/Will/Godot/Projects/TextEditorRedux/src"
+current_path = "/Users/Will/Godot/Projects/TextEditorRedux/src/"
+
+[node name="QuitDialog" type="ConfirmationDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -262.0
+margin_top = -70.0
+margin_right = 262.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 400, 140 )
+window_title = ""
+dialog_text = "Are you sure you want to quit without saving?"
+[connection signal="item_pressed" from="VBoxContainer/MenuBar/MenuFile" to="." method="_on_MenuFile_item_pressed"]
+[connection signal="checkable_item_pressed" from="VBoxContainer/MenuBar/MenuView" to="." method="_on_MenuView_checkable_item_pressed"]
+[connection signal="item_pressed" from="VBoxContainer/MenuBar/MenuHelp" to="." method="_on_MenuHelp_item_pressed"]
+[connection signal="text_changed" from="VBoxContainer/TextEdit" to="." method="_on_TextEdit_text_changed"]
+[connection signal="file_selected" from="FileDialog" to="." method="_on_FileDialog_file_selected"]
+[connection signal="confirmed" from="QuitDialog" to="." method="_on_QuitDialog_confirmed"]

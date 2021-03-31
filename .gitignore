@@ -1,0 +1,18 @@
+# Custom Godot project .gitignore by Michelle S. (Alterae)
+# Adapted from https://github.com/github/gitignore/Godot.gitignore
+# Assumes the Godot project itself is located in the ./src/ directory
+
+# Ignore the build directory
+/build/
+
+# Godot-specific ignores
+/src/.import/
+/src/export.cfg
+/src/export_presets.cfg
+
+# Ignore any translations
+*.translation
+
+# Mono-specific ignores
+/src/.mono/
+/src/data_*/
