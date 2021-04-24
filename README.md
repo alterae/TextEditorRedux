@@ -1,6 +1,6 @@
 # Text Editor Redux
 
-This here is a _really_ bad simple text editor I made using Godot.
+This is a _really_ simple text editor I made using Godot.
 
 Have fun with it, I guess.
 
@@ -24,3 +24,5 @@ Have fun with it, I guess.
 ## Development Plans
 
 - Literally none.
+
+Feedback, suggestions, and bug reports will be read, but I cannot guarantee I will do anything about them.
