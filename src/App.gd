@@ -48,7 +48,7 @@ func save_file() -> void:
 		f.close()
 		saved = true
 		saved_state = $VBoxContainer/TextEdit.text
-	
+
 	update_window_title()
 
 
@@ -111,7 +111,7 @@ func _on_FileDialog_file_selected(path: String) -> void:
 			$VBoxContainer/TextEdit.text = text
 			saved = true
 			saved_state = text
-	
+
 	update_window_title()
 
 
@@ -124,7 +124,7 @@ func _on_TextEdit_text_changed() -> void:
 		saved = true
 	else:
 		saved = false
-		
+
 	update_window_title()
 
 
@@ -136,3 +136,23 @@ func _on_MenuView_checkable_item_pressed(name: String, value: bool) -> void:
 			$VBoxContainer/TextEdit.wrap_enabled = value
 		"Show Minimap":
 			$VBoxContainer/TextEdit.minimap_draw = value
+
+
+# Saves the application state.  TODO: Figure out what type the state should be.
+func save_state(state: Dictionary) -> void:
+	pass
+
+
+# Loads and returns the saved application state.
+func load_state() -> Dictionary:
+	pass
+
+
+# Gets the current application state.
+func get_app_state() -> Dictionary:
+	pass
+
+
+# Sets the application state.
+func set_app_state(state: Dictionary) -> void:
+	pass
