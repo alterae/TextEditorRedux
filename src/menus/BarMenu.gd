@@ -20,7 +20,7 @@ func setup_menu_items(items: Array) -> void:
 			"CHECK":
 				get_popup().add_check_item(item[1])
 			_:
-				get_popup().add_item(item[0], -1, item[1])
+				get_popup().add_item(item[0], -1, item[1]) # Bad unmaintainable code.
 
 
 # Turn the popup's signal into a signal we can actually work with.
